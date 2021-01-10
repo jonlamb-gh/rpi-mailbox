@@ -32,4 +32,7 @@ fn main() {
 
     let throttled = get_throttled(&mb).expect("throttled");
     println!("Throttled: 0x{:x}", throttled);
+
+    let temperature = get_temperature(&mb, 0).expect("temperature");
+    println!("temperature: {} C", temperature as f32 / 1000.0);
 }

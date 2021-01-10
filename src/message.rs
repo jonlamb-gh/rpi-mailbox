@@ -263,3 +263,27 @@ pub mod throttled {
         pub out: Out,
     }
 }
+
+/// RPI_FIRMWARE_GET_TEMPERATURE
+pub mod temperature {
+    #[repr(C)]
+    #[derive(Debug, Clone, Copy)]
+    pub struct In {
+        pub sensor_id: u32,
+        pub temperature: u32,
+    }
+
+    #[repr(C)]
+    #[derive(Debug, Clone, Copy)]
+    pub struct Out {
+        pub sensor_id: u32,
+        pub temperature: u32,
+    }
+
+    #[repr(C)]
+    #[derive(Clone, Copy)]
+    pub union Message {
+        pub in_: In,
+        pub out: Out,
+    }
+}

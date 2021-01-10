@@ -205,3 +205,23 @@ pub fn get_throttled(mb: &Mailbox) -> Result<u32> {
     )?;
     unsafe { Ok(msg.out.throttled) }
 }
+
+/// Temperature of the SoC in thousandths of a degree C
+pub fn get_temperature(mb: &Mailbox, sensor_id: u32) -> Result<u32> {
+    use message::temperature::*;
+
+    let mut msg = Message {
+        in_: In {
+            sensor_id,
+            temperature: 0,
+        },
+    };
+    rpi_firmware_property(
+        mb,
+        RPI_FIRMWARE_GET_TEMPERATURE,
+        &mut msg as *mut Message as *mut u8,
+        size_of::<Message>(),
+        size_of::<Out>(),
+    )?;
+    unsafe { Ok(msg.out.temperature) }
+}
