@@ -106,7 +106,7 @@ pub fn rpi_firmware_property(
             tag_data,
             u.data
                 .as_ptr()
-                .offset(size_of::<rpi_firmware_property_tag_header>() as isize),
+                .add(size_of::<rpi_firmware_property_tag_header>()),
             buf_size,
         );
 
@@ -161,7 +161,7 @@ pub fn rpi_firmware_property(
         ptr::copy(
             u.data
                 .as_ptr()
-                .offset(size_of::<rpi_firmware_property_tag_header>() as isize),
+                .add(size_of::<rpi_firmware_property_tag_header>()),
             tag_data,
             req_resp_size,
         )

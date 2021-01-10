@@ -1,4 +1,3 @@
-use nix;
 use std::fmt;
 
 use failure::{Backtrace, Context, Fail};
