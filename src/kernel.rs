@@ -23,15 +23,15 @@ mod ioctl {
     const VCIO_IOC_TYPE_MODE: u8 = 0;
 
     #[cfg(target_pointer_width = "32")]
-    ioctl! {
+    ioctl_readwrite! {
         /// mailbox_property via ioctl with VCIO_IOC_MAGIC
-        readwrite mailbox_property with VCIO_IOC_MAGIC, VCIO_IOC_TYPE_MODE; u32
+        mailbox_property, VCIO_IOC_MAGIC, VCIO_IOC_TYPE_MODE, u32
     }
 
     #[cfg(target_pointer_width = "64")]
-    ioctl! {
+    ioctl_readwrite! {
         /// mailbox_property via ioctl with VCIO_IOC_MAGIC
-        readwrite mailbox_property with VCIO_IOC_MAGIC, VCIO_IOC_TYPE_MODE; u64
+        mailbox_property, VCIO_IOC_MAGIC, VCIO_IOC_TYPE_MODE, u64
     }
 }
 
